@@ -39,5 +39,23 @@ def to_usd(my_price):
 
 # TODO: write some Python code here to produce the desired output
 
-print(products)
+# Ask for a product identifier
+item = input("Scan or enter product code ")
+# Validate as a valid product
+# list_of_item_numbers = [i for i in products if int(item) in i["id"]]
+# print("valid product")
+# Lookup the price
+item_price = products[int(item)]["price"] 
+print(item_price)
+
+# Indicate "done" or ready for checkout
+
+# Print an itemized customer receipt
+    # Store name, phone number, address, website
+    # Date and time the checkout process began
+    # Name and price of each item (formatted as US Dollars and cents)
+    # Subtotal
+    # Tax owed
+    # Total owed
+    # Thank you message
 
