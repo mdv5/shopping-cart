@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 In in the root directory of your local repository, create a new file called ".env", and update the contents of the ".env" file to specify the following environment variables:
 
-    <!-- VARIABLE_NAME="VALUE" -->
+TAX_RATE = ENTER LOCAL TAX RATE HERE
 
 ## Usage
 
@@ -47,4 +47,4 @@ python shopping_cart.py
 ```
 
 ## General app rules
-To be updated
+Follow the prompts to input the product id for each item you would like to add to the cart. The app will only allow valid product ids. When you are done entering products. Type 'done' to complete the transaction and print the receipt.

@@ -1,4 +1,12 @@
 # shopping_cart.py
+from datetime import datetime, date
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+#Set Tax Rate
+TAX_RATE = os.getenv('TAX_RATE')
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -40,13 +48,76 @@ def to_usd(my_price):
 # TODO: write some Python code here to produce the desired output
 
 # Ask for a product identifier
-item = input("Scan or enter product code ")
+
+product_ids = [str(i['id']) for i in products]
+
+shopping_cart_ids = []
+checkout_start_time = datetime.now()
+
+while True:
+    product_entered = input("Scan or enter product code ")
+    if product_entered == "done":
+        break
+    elif product_entered in product_ids:
+        shopping_cart_ids.append(product_entered)
+    else:
+        print("Invalid product id")
+
+# Build the shopping cart
+shopping_cart = [i for i in products if str(i["id"]) in shopping_cart_ids]
+
+#Set the store details
+store_name = "Mike's Bodega"
+store_phone_number = "555-456-1981"
+store_address = "45 Winding Way"
+store_website = "www.mikesbodega.com"
+
+#Print the store details and date/time
+print("__________________")
+print(store_name)
+print(store_phone_number)
+print(store_address)
+print(store_website)
+print("__________________")
+print(checkout_start_time.strftime("%x"), checkout_start_time.strftime("%X"))
+print("__________________")
+
+#Create list to track subtotal
+items_to_subtotal = []
+
+#Print the shopping cart items
+print("Items:")
+for item in shopping_cart:
+    print(item["name"]," ", to_usd(item["price"]))
+    items_to_subtotal.append(item["price"])
+
+# Calculate totals
+item_subtotal = sum(items_to_subtotal)
+total_tax = item_subtotal*float(TAX_RATE)
+total = item_subtotal + total_tax
+
+# Print the totals
+print("__________________")
+print("Subotal = ", to_usd(item_subtotal))
+print("Tax = ", to_usd(total_tax))
+print("Total = ", to_usd(total))
+print("__________________")
+print("Thank you for shopping! Please come again soon.")
+
+
+
+# matching_keys =[i["id"] for i in products if i["id"] == int(product_entered)]
+# print(matching_keys)    
 # Validate as a valid product
-# list_of_item_numbers = [i for i in products if int(item) in i["id"]]
-# print("valid product")
-# Lookup the price
-item_price = products[int(item)]["price"] 
-print(item_price)
+
+# matching_items = [i for i in products if str(i["id"]) == str(item)]
+# matching_item = matching_items[0]
+# print(matching_item)
+
+#  Lookup the price
+
+# item_price = products[int(item)]["price"] 
+# print(item_price)
 
 # Indicate "done" or ready for checkout
 
