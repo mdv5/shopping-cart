@@ -45,8 +45,6 @@ def to_usd(my_price):
     return f"${my_price:,.2f}" #> $12,000.71
 
 
-# TODO: write some Python code here to produce the desired output
-
 # Ask for a product identifier
 
 product_ids = [str(i['id']) for i in products]
@@ -103,30 +101,3 @@ print("Tax = ", to_usd(total_tax))
 print("Total = ", to_usd(total))
 print("__________________")
 print("Thank you for shopping! Please come again soon.")
-
-
-
-# matching_keys =[i["id"] for i in products if i["id"] == int(product_entered)]
-# print(matching_keys)    
-# Validate as a valid product
-
-# matching_items = [i for i in products if str(i["id"]) == str(item)]
-# matching_item = matching_items[0]
-# print(matching_item)
-
-#  Lookup the price
-
-# item_price = products[int(item)]["price"] 
-# print(item_price)
-
-# Indicate "done" or ready for checkout
-
-# Print an itemized customer receipt
-    # Store name, phone number, address, website
-    # Date and time the checkout process began
-    # Name and price of each item (formatted as US Dollars and cents)
-    # Subtotal
-    # Tax owed
-    # Total owed
-    # Thank you message
-
